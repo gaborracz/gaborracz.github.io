@@ -31,6 +31,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <button class="btn btn-warning ms-2" onclick="toggleContrast()">High Contrast / Large Font</button>
+                </li>
             </ul>
         </div>
     </div>
@@ -109,6 +112,11 @@
 <footer class="bg-dark text-light text-center py-3 mt-auto shadow-sm">
     Created by Gabor Racz @ 2025
 </footer>
+<script>
+    function toggleContrast() {
+        document.body.classList.toggle('high-contrast-large');
+    }
+</script>
 </body>
 </html>
 

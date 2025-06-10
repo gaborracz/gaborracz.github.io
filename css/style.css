@@ -35,3 +35,36 @@ body {
   border-color: rgba(255,255,255,0.5);
 }
 
+.high-contrast-large {
+  background-color: #000 !important;
+  color: #fff !important;
+  font-size: 1.5rem !important; /* 24px base */
+  line-height: 2 !important;
+  letter-spacing: 0.05em !important;
+}
+
+.high-contrast-large a,
+.high-contrast-large .btn,
+.high-contrast-large .nav-link {
+  color: #ffff00 !important;
+  background-color: #000 !important;
+  font-weight: bold !important;
+  text-decoration: underline;
+  border: 2px solid #fff !important;
+}
+
+.high-contrast-large .card,
+.high-contrast-large .navbar,
+.high-contrast-large .footer,
+.high-contrast-large .form-control {
+  background-color: #111 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+.high-contrast-large .form-label,
+.high-contrast-large label {
+  color: #fff !important;
+  font-size: 1.25em !important;
+  font-weight: bold !important;
+}

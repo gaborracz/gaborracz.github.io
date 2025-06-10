@@ -31,6 +31,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../contact.html">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <button class="btn btn-warning ms-2" onclick="toggleContrast()">High Contrast / Large Font</button>
+                </li>
             </ul>
         </div>
     </div>
@@ -59,13 +62,14 @@ int main() {
 </code></pre>
             <p class="card-text">
                 <strong>What does this code do?</strong><br>
+            </p>
             <ul>
                 <li><span class="font-monospace">#include &lt;iostream&gt;</span> tells the compiler to include the standard input/output stream library, which is necessary for outputting text.</li>
                 <li><span class="font-monospace">int main()</span> defines the main function, which is the entry point of every C++ program.</li>
                 <li><span class="font-monospace">std::cout &lt;&lt; "Hello, World!" &lt;&lt; std::endl;</span> prints “Hello, World!” to the screen, followed by a newline.</li>
                 <li><span class="font-monospace">return 0;</span> signals that the program ended successfully.</li>
             </ul>
-            </p>
+
             <h5 class="mt-4">3. Compile the Program</h5>
             <p class="card-text">
                 To turn your code into an executable program, you need to compile it. If you’re using an IDE, just click the “Build” or “Run” button. If you’re using the command line, navigate to the folder containing <span class="font-monospace">hello.cpp</span> and run:
@@ -99,6 +103,11 @@ int main() {
 <footer class="bg-dark text-light text-center py-3 mt-auto shadow-sm">
     Created by Gabor Racz @ 2025
 </footer>
+<script>
+    function toggleContrast() {
+        document.body.classList.toggle('high-contrast-large');
+    }
+</script>
 </body>
 </html>
 

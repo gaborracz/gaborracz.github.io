@@ -31,6 +31,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../contact.html">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <button class="btn btn-warning ms-2" onclick="toggleContrast()">High Contrast / Large Font</button>
+                </li>
             </ul>
         </div>
     </div>
@@ -56,6 +59,7 @@
             </p>
         </div>
         <div class="d-flex justify-content-center align-items-center my-5">
+            <figure class="text-center">
             <div class="ratio ratio-16x9" style="max-width: 700px; width: 100%;">
                 <iframe
                         src="https://www.youtube.com/embed/ngCos392W4w?si=xvuEkG5vFoLFciWR"
@@ -65,12 +69,518 @@
                         style="border:0;">
                 </iframe>
             </div>
+                <figcaption class="mt-2 text-light">
+                    <details>
+                        <summary>Video description and transcript</summary>
+                        This video explains the basics of recursion in computer science.<br>
+                        <strong>Transcript:</strong><br>
+                        today we are going to talk about
+                        recursion I think most computer science
+                        students would agree that recursion felt
+                        more confusing than your average
+                        computer science topic in this video I'm
+                        gonna show you five simple steps that
+                        you can use to help you tackle any
+                        recursive problem and hopefully these
+                        steps will help you realize that in
+                        reality recursion isn't actually that
+                        bad
+                        I'm gonna show you how to apply these
+                        steps in the context of solving three
+                        specific recursive problems each of them
+                        progressively more difficult than the
+                        last so make sure you stick to the end
+                        of the video and as always I think
+                        you'll get the most out of this video if
+                        you take the time to pause and ponder
+                        some of the problems that we work
+                        through and the steps we went through to
+                        solve them so without further ado let's
+                        get started
+                        suppose we want to solve the following
+                        problem recursively write a function
+                        that given an input end sums all the
+                        non-negative integers up to n here's a
+                        couple quick examples of inputs to this
+                        function to give you a sense for what we
+                        are trying to implement a lot of you may
+                        have seen an iterative version of this
+                        function or even a mathematical version
+                        of it that we went during a previous
+                        video but if you had to solve it
+                        recursively how would you do it
+                        recursion is all about taking a problem
+                        and solving it using simpler versions of
+                        the problem so the first step in solving
+                        a recursive problem requires you to ask
+                        yourself what's the simplest possible
+                        input for the function here the simplest
+                        possible case is n equal 0 where we know
+                        that the result should also be 0 the
+                        simplest case often translates itself
+                        into a base case for our recursive
+                        problem the base case of a recursive
+                        function is the only input where we
+                        provide an explicit answer all other
+                        solutions to the problem we'll build on
+                        the base case the second key step to
+                        solving recursive problems is trying
+                        examples and visualizing how the inputs
+                        and outputs of these functions interact
+                        in this problem one fun way to visualize
+                        things is to treat our sum as building a
+                        triangle with the base as the input
+                        value that way
+                        some is a total number of individual
+                        blocks in this triangle you can try as
+                        many examples as you want once we have a
+                        set of examples we now want to move to
+                        the third step which involves relating
+                        larger examples to smaller examples take
+                        a second to see if you see any
+                        relationships between the cases here
+                        that pop out to you put in more specific
+                        terms with these examples ask yourself
+                        hey if I was given the answer for the N
+                        equals 4 case could I solve the N equals
+                        5 case if I was given the ancestor N
+                        equals 3 case could I saw the N equals 4
+                        case one interesting relationship that
+                        you may have noticed is that if we know
+                        the answer to the N equals 4 case all we
+                        need to do is add 5 to this answer to
+                        get the solution to our N equals 5 case
+                        and similarly if we know the answer to
+                        the N equals 3 case we can get the
+                        answer to the N equals 4 case by adding
+                        4 it's not too hard to convince yourself
+                        that this should be true in general but
+                        if necessary feel free to try some
+                        larger cases to verify this now brings
+                        us to the fourth key step which is to
+                        generalize this pattern let's say we
+                        want to figure out the sum for the input
+                        N equals K we can find the sum by first
+                        taking the sum up to N equals K minus 1
+                        and then all we have to do is add K to
+                        this value once we've generalize a
+                        pattern the last step now involves
+                        writing code by combining this recursive
+                        pattern with the base case this actually
+                        turns out to be not too hard since the
+                        code almost writes itself from our base
+                        cases and recursive pattern let's dig a
+                        little bit deeper to see how this really
+                        works for a particular input let's say
+                        we run this function for input N equals
+                        5 what actually ends up happening well
+                        we go through the initial function and
+                        then hit a recursive case which adds 5
+                        to the result of calling out some
+                        function on the input 4 so we know that
+                        this should theoretically give us the
+                        10 but technically this function hasn't
+                        been evaluated yet what actually ends up
+                        happening is we have to go back into our
+                        function and repeat the process we hit
+                        the recursive case again which then
+                        causes us to now add 4 to the value of
+                        sum called on 3 which once again kicks
+                        off the same process as before let's
+                        take a moment to see how this unravels
+                        [Music]
+                        this continues until we hit the base
+                        case which then is used to softs the sum
+                        function called on n equals 1 which then
+                        solves a sum function called on n equals
+                        2 and so on and so forth until we
+                        eventually build up the solution for our
+                        original N equals 5 case it's always ok
+                        to take some time to unravel the
+                        recursion to ensure that things work but
+                        as you get more experience solving these
+                        type of problems there's a concept
+                        called the recursive leap of faith that
+                        I would like you to think about the
+                        recursive leap of faith makes solving
+                        recursive problems much faster it's all
+                        about assuming that easier versions of
+                        the problem will be correct in this
+                        particular problem the recursive leap of
+                        faith would say that if I wanted to
+                        solve some called on n equals 5 let me
+                        just assume that some on N equals 4 is
+                        going to work and then if I add 5 to
+                        that some call on N equals 5 will also
+                        be correct don't worry if you're a
+                        little hesitant to believe in the
+                        recursive leap of faith but it is a
+                        useful problem-solving trick that helps
+                        in more complex recursive problems let's
+                        now explore a more involved recursive
+                        problem here's the problem write a
+                        function that takes two inputs N and M
+                        and outputs the number of unique paths
+                        from the top left corner to the bottom
+                        right corner of an N by M grid one key
+                        constraint is that you can only move
+                        down or write one unit at a time before
+                        we apply our five steps
+                        let's first familiarize ourselves with a
+                        few inputs and outputs for this function
+                        here's what happens when N equals two
+                        and M is equal to four
+                        [Music]
+                        we end up with exactly four paths and
+                        here's another example with N equals
+                        three and M equals three
+                        [Music]
+                        we end up with six unique paths all
+                        right let's begin let's play around with
+                        some simple inputs and see what happens
+                        the simplest possible reasonable input
+                        dysfunction is a one by one grid where
+                        we end up with exactly one path if we
+                        actually take a second to try some other
+                        simple inputs you might notice something
+                        interesting we can actually make a
+                        fairly comprehensive base case by
+                        noticing that if either one of these
+                        dimensions is going to be one we have
+                        only one unique path this can be written
+                        quite concisely as a following base case
+                        often with base cases you want to find a
+                        way to be as comprehensive as possible
+                        don't be afraid to adapt though it's
+                        completely normal to come back later and
+                        modify the base case let's now take a
+                        look at a decent sample size of examples
+                        to get a feel for the problem when
+                        coming up with examples for recursive
+                        problems it makes sense to do them in a
+                        sweeping manner where a lot of the
+                        examples are really close to each other
+                        remember our ultimate goal is to find a
+                        way to solve any specific case using
+                        simpler versions of that case so it
+                        makes sense to have examples that are
+                        close to each other all right so now
+                        that we have a sizable set of examples
+                        take a look at these and see if you
+                        notice any interesting relationships
+                        between cases I know that's a lot to
+                        look at so as a hint let's narrow down
+                        our focus to just these three examples
+                        do you notice anything how about now
+                        there's actually a really nice
+                        one-to-one correspondence between each
+                        path and the two by three and three by
+                        two cases two each path in the three by
+                        three case for each path in the two by
+                        three case we can take that path and go
+                        one unit down to create a path in the
+                        three by three case and for each path in
+                        the three by two case we can move one
+                        unit right to create a path in the three
+                        by three case so at least in this
+                        example we can confidently say that the
+                        number of paths in the three by three
+                        example is the sum of the number of
+                        paths in the two by three example and
+                        the number of paths in the three by two
+                        example but is that just a coincidence
+                        let's see if we can test this pattern by
+                        working backwards let's try to find the
+                        paths in the three by four case by
+                        analyzing a similar set of easier
+                        examples following the earlier pattern
+                        let's see if the number of paths in the
+                        three by four case is really the sum of
+                        the Pat's in the three by three case and
+                        two by four case we'll take each path
+                        for the three by three case and move one
+                        to the right to make a corresponding
+                        path for the three by four case and then
+                        we'll take each path in a two by four
+                        case and go one step down to make a path
+                        in the three by four case and it turns
+                        out that the set of paths that are
+                        created from this construction end up
+                        being all the unique paths to a three by
+                        four grid take a second to verify this
+                        for yourself if you're skeptical
+                        [Music]
+                        so let's now generalize this pattern we
+                        can find the total number of unique
+                        paths in an N by n grid by first finding
+                        all the unique paths from the N by M
+                        minus 1 grid each of these paths
+                        correspond to a path in the N by n grid
+                        since all we do is we move one unit to
+                        the right to create an Associated path
+                        and the remaining paths can be found by
+                        finding all the unique paths in an N
+                        minus 1 by M grid where we now take each
+                        path add one unit down and get the
+                        corresponding path in the N by M case
+                        once we found this general relationship
+                        the hard part is now over the last thing
+                        we do is take this general pattern bring
+                        it together with a base case and now
+                        write code the corresponding code for
+                        such a seemingly overwhelming problem
+                        ends up being remarkably simple and
+                        elegant and you'll see this a lot in
+                        recursive problems speaking of hard
+                        problems let's take a look at a really
+                        challenging problem here's the problem
+                        write a function that counts the number
+                        of ways you can partition and objects
+                        using parts up to M as we've done so far
+                        let's take a look at some examples to
+                        get a sense of what this problem is even
+                        asking for N equals 6 and M equals 4
+                        here's how the partitions work out
+                        [Music]
+                        we end up with a total of nine unique
+                        partitions let's take a look at one more
+                        example to make sure we really
+                        understand what's going on here's what
+                        the partitions look like for inputs N
+                        equals 5 and M equals 5 here we have
+                        seven unique partitions and make sure
+                        you take a second to really understand
+                        why these are the only valid partitions
+                        all right so this problem definitely
+                        feels a little intimidating since it's
+                        not really obvious how we would even go
+                        about starting to solve it but this is
+                        where we're gonna have to fall back on
+                        our five steps
+                        let's start with step one the first
+                        thought for what the simplest possible
+                        input should be is when n is equal to
+                        zero and M is equal to zero but what
+                        does this mean what it's asking is how
+                        many ways can you partition 0 objects
+                        using parts up to 0 this may be a little
+                        bit mind-blowing but there's actually
+                        only one partition and that partition is
+                        to include no parts and in fact trying
+                        inputs N equals 0 with M equals 1 and
+                        then N equals 0 with M equals 2 is
+                        really no different this allows you to
+                        make another fairly comprehensive base
+                        case where the number of partitions is 1
+                        if n is equal to 0 but there's some
+                        other simple cases that we should also
+                        check out if n is equal to 1 and M is
+                        equal to 0 how many partitions do we
+                        have how many ways can we partition one
+                        object if we are only allowed to use up
+                        to 0 parts well this is actually
+                        impossible we need at least one part so
+                        there are 0 ways to partition these
+                        inputs and the story stays the same no
+                        matter what the N is so this is the
+                        first example of a problem where we will
+                        need to separate base cases the second
+                        one being that if M is equal to 0 we
+                        have zero partitions all right let's now
+                        visualize a sizeable set of examples as
+                        before let's look at examples that are
+                        relatively close to each other in
+                        numbers so that it will
+                        make it easier for us to find patterns
+                        in the following steps once again if
+                        your task to solving this problem you
+                        don't want to be shy about writing out a
+                        ton of examples not only will it make
+                        you more comfortable with the problem
+                        but it also might help you find key
+                        insights to the solution
+                        [Music]
+                        so now that you have a good set of
+                        examples take a moment to see if you
+                        notice any interesting relationships
+                        among the partitions feel free to pause
+                        the video if you're struggling to find
+                        anything let's narrow our focus to a
+                        subset of these examples all right so
+                        the first interesting thing you might
+                        have noticed by looking at these
+                        examples is that a lot of the partitions
+                        on the larger problems are repeated in
+                        the easier version of a problem isn't
+                        that a little bit wild these are the
+                        types of patterns that show up a lot in
+                        these types of recursive problems and we
+                        definitely want to see if we can verify
+                        if this holds for larger examples let's
+                        take a look at the N equals 7 M equals 4
+                        case we have a total of 11 partitions so
+                        going off our previous example
+                        we're expecting all the partitions of N
+                        equals 7 M equals 3 to show up in these
+                        partitions and in fact when we go
+                        through the partitions we indeed find
+                        that all 8 partitions from the N equals
+                        7 M equals 3 case show up in the N
+                        equals 7 and M equals 4 case how in the
+                        world does that work what crazy sorcery
+                        is going on here the reason this happens
+                        is actually surprisingly simple if you
+                        take a moment to think about it from a
+                        perspective of how you are actually
+                        creating these partitions you'll get an
+                        intuitive sense for why this is the case
+                        when you're trying to partition 7 using
+                        parts up to 4 at some point this is
+                        going to include all the partitions of 7
+                        using parts up to 3 there's just no
+                        other way around it more formally we can
+                        assert that the partitions of n using
+                        parts up to n minus 1 is a subset of the
+                        partitions and end using parts up to M
+                        okay so this seems like a pretty good
+                        start we now know that a subset of the
+                        partitions of n objects using parts up
+                        to M can be found from the simpler
+                        problem of partitioning and objects
+                        using parts up to M minus 1 but what
+                        about the remaining partitions where do
+                        these partitions come from
+                        let's analyze these cases what do they
+                        all have in common do you see it they
+                        all happen to use the actual M value as
+                        part of each partition and this should
+                        make sense because the subsets that we
+                        were moved or partitions of n using
+                        parts up to M minus 1 so the partitions
+                        that are left here that use M represent
+                        the only other case at this point you
+                        might be thinking ok great
+                        so the remaining partitions all use M
+                        how does this actually help us well
+                        let's think about what it actually means
+                        to use em in a partition once we declare
+                        hey I'm going to go ahead and use em as
+                        a partition this is what we end up
+                        having left in each of those cases all
+                        that's going on here is we subtracted M
+                        from our original n objects so we have a
+                        new end value with the same and value as
+                        before and check this out we actually
+                        have another one-to-one correspondence
+                        if we add em to each partition in the
+                        smaller problem we end up with the same
+                        partition in our original problem at
+                        this point you might still be a little
+                        skeptical because we tried this only on
+                        relatively small examples so to really
+                        verify this let's try one more large
+                        example and this time we're gonna try
+                        work backwards like we did in the grid
+                        problem let's look at the case where n
+                        is equal to 9 and M is equal to 5 based
+                        on our current observations we expect
+                        all the partitions in this case to
+                        correspond to the partitions in the n is
+                        equal to 4 and M is equal to 5 case and
+                        then the N is equal to 9 and M is equal
+                        to 4 case remember the first sub-problem
+                        represents all the partitions that use
+                        our original m as part of the partition
+                        when the second sub-problem represents
+                        partitions that use parts up to n minus
+                        1 here are the partitions for the N is
+                        equal to 4 and M equals 5 case by adding
+                        M to each of these partitions we
+                        generate the corresponding subset of
+                        partitions for the N equals 9 and M
+                        equals 5 case and combining this with
+                        the 18 partitions from the N equals 9
+                        and M equals 4 case we end up with 23
+                        total partitions for the N equals 9 and
+                        M equals 5 case and you can take the
+                        time to verify this if you wish but
+                        these do actually end up being all the
+                        partitions for N equals 9 and M equals 5
+                        case ok let's now generalize this
+                        pattern if we want to solve the count
+                        partitions problem called on a and B it
+                        will end up being the sum of the count
+                        partitions called on a minus B and B and
+                        then count partitions called on a and B
+                        minus 1 this is the key recursive
+                        relation that will solve this problem
+                        let's now execute the final step and put
+                        together our recursive relation with the
+                        base case one interesting wrinkle that
+                        we will have to take account of is that
+                        one of our recursive calls provides an
+                        argument that is n minus M some of you
+                        may have noticed that it's perfectly
+                        valid to have cases where n is actually
+                        less than M which then means that the
+                        new kalt will have a negative argument
+                        to count for this we have to include
+                        this corner case in one of our base
+                        cases if the N value provided is
+                        negative we will have zero partitions
+                        this problem is a good example of how
+                        you might have to modify some of your
+                        base cases
+                        after finding a general recursive
+                        pattern the cool thing about recursion
+                        is that for such a tricky problem our
+                        final solution actually ends up being
+                        only six lines of code
+                        [Music]
+                        so to recap what we did in this video we
+                        went over five key steps to solve any
+                        recursive problem and then went about
+                        applying these steps to three problems
+                        of various difficulties you learned the
+                        importance of starting simple and asking
+                        yourself what the simplest possible case
+                        is you found it helpful to work through
+                        some examples to get a sense for what
+                        the recursive problem was asking you
+                        also went about relating hard examples
+                        to easy examples to find a generalizable
+                        recursive pattern and then with this
+                        pattern in hand you went about writing
+                        the code as with anything you learned
+                        you're going to have to spend some time
+                        to really contemplate and work through
+                        recursive problems to really begin to
+                        master solving them this video is all
+                        about giving you a mental framework to
+                        do that and I hope it was helpful in
+                        that sense thanks for watching and as
+                        always I'd appreciate it if you liked
+                        the video if you enjoyed it if you want
+                        to see more content like this be sure to
+                        hit the subscribe button and if you want
+                        to more directly support this channel be
+                        sure to check out the patreon page
+                        linked in the description below see you
+                        in the next video
+                    </details>
+                </figcaption>
+            </figure>
         </div>
     </div>
 </div>
 <footer class="bg-dark text-light text-center py-3 mt-auto shadow-sm">
     Created by Gabor Racz @ 2025
 </footer>
+<script>
+    function toggleContrast() {
+        document.body.classList.toggle('high-contrast-large');
+    }
+</script>
 </body>
 </html>
 
