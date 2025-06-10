@@ -1,0 +1,37 @@
+body {
+  background-image: url('../media/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.navbar-custom {
+  background-color: #212529; /* Dark gray */
+  border-bottom: 1px solid #343a40; /* Subtle border */
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+  color: #f8f9fa !important; /* Light text */
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+  color: #00ffd0 !important; /* Neon accent for hover/active */
+  text-shadow: 0 0 5px #00ffd0;
+}
+
+/* Make the navbar toggler icon white for dark backgrounds */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Optional: Make the border of the toggler lighter as well */
+.navbar-toggler {
+  border-color: rgba(255,255,255,0.5);
+}
+

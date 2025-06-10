@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gabor Racz</title>
+  <link rel="icon" href="../media/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Theme Switcher Example</title>
+  <!-- Bootstrap 5.3+ CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons (optional, for button icons) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+    }
+    .mode-switch {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1050;
+    }
+  </style>
+</head>
+<body>
+  <!-- Theme Switcher Buttons -->
+  <div class="mode-switch btn-group">
+    <button title="Dark mode" id="dark" class="btn btn-sm btn-outline-secondary">
+      <i class="bi bi-moon"></i>
+    </button>
+    <button title="Light mode" id="light" class="btn btn-sm btn-outline-secondary">
+      <i class="bi bi-sun"></i>
+    </button>
+    <button title="System default" id="system" class="btn btn-sm btn-outline-secondary">
+      <i class="bi bi-display"></i>
+    </button>
+  </div>
+
+  <!-- Example Content -->
+  <div class="container py-5">
+    <h1 class="mb-4">User-Selectable Theme Example</h1>
+    <p>
+      Use the buttons in the top right corner to switch between light, dark, and system themes.
+    </p>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Dynamic Theme Switching</h5>
+        <p class="card-text">
+          This page uses Bootstrap 5.3+ built-in theme support. The selected theme is saved and applied automatically on your next visit.
+        </p>
+        <p class="card-text">
+          <a href="blogpost-6.html">Back to the previous page.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Theme Switcher Script -->
+  <script>
+    function setTheme(mode = 'auto') {
+      const html = document.documentElement;
+      const userMode = localStorage.getItem('bs-theme');
+      const sysMode = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      const useSystem = mode === 'system' || (!userMode && mode === 'auto');
+      const modeChosen = useSystem ? 'system' : (mode === 'dark' || mode === 'light' ? mode : userMode);
+
+      if (useSystem) {
+        localStorage.removeItem('bs-theme');
+        html.setAttribute('data-bs-theme', sysMode);
+      } else {
+        localStorage.setItem('bs-theme', modeChosen);
+        html.setAttribute('data-bs-theme', modeChosen);
+      }
+
+      // Visual feedback
+      document.querySelectorAll('.mode-switch .btn').forEach(e => e.classList.remove('active'));
+      if (modeChosen === 'system' || useSystem) {
+        document.getElementById('system').classList.add('active');
+      } else if (modeChosen === 'dark') {
+        document.getElementById('dark').classList.add('active');
+      } else if (modeChosen === 'light') {
+        document.getElementById('light').classList.add('active');
+      }
+    }
+
+    // Initial theme setup
+    setTheme();
+
+    // Add event listeners
+    document.querySelectorAll('.mode-switch .btn').forEach(btn => {
+      btn.addEventListener('click', () => setTheme(btn.id));
+    });
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => setTheme());
+  </script>
+</body>
+</html>
