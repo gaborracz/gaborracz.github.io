@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nevenincs király földosztása</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="menu" data-screen="mainMenu">
+        <h1>Nevenincs király földosztása</h1>
+        <div class="input-group">
+            <label for="playerName">Játékos neve:</label>
+            <input type="text" name="playerName" placeholder="Írd be a neved..." required>
+        </div>
+        <fieldset>
+            <legend>Nehézség</legend>
+            <div>
+                <input type="radio" name="difficulty" value="easy" checked>
+                <label>Könnyű (5x5)</label>
+            </div>
+            <div>
+                <input type="radio" name="difficulty" value="medium">
+                <label>Közepes (7x7)</label>
+            </div>
+            <div>
+                <input type="radio" name="difficulty" value="hard">
+                <label>Nehéz (9x9)</label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Mentések</legend>
+            <select name="savedGamesList" class="saved-games-dropdown">
+                <option value="">-- Válassz mentést --</option>
+            </select>
+        </fieldset>
+        <div class="menu-buttons">
+            <button data-action="newGame">Új játék indítása</button>
+            <button data-action="loadGame">Mentett játék betöltése</button>
+            <button data-action="rules">Játékszabályok</button>
+            <button data-action="leaderboard">Ranglista</button>
+        </div>
+    </div>
+    <div class="menu hidden" data-screen="rulesScreen">
+        <h2>Játékszabályok</h2>
+        <p style="text-align: justify;">
+            Nevenincs király parancsa alapján fel kell osztani a földeket. 
+            Minden házhoz pontosan annyi mező kell tartozzon, ahányan abban laknak. 
+            A földeket falakkal (kő) kell elválasztani úgy, hogy összefüggő hálózatot alkossanak, és ne jöjjön létre 2x2-es tömör faltömb. 
+            Minden birtok egybefüggő kell legyen, és pontosan egy házat tartalmazhat.
+        </p>
+        <p><b>Bal egérgomb:</b> Fal építése / bontása.<br><b>Jobb egérgomb:</b> Birtok megjelölése (sötét fű).</p>
+        <button class="backToMain">Vissza a főmenübe</button>
+    </div>
+    <div class="menu hidden" data-screen="leaderboardScreen">
+        <h2>Ranglista (Legjobb idők)</h2>
+        <div class="leaderboard-content"></div>
+        <button class="backToMain">Vissza a főmenübe</button>
+    </div>
+    <div class="menu hidden" data-screen="gameScreen">
+        <div class="header">
+            Játékos: <span class="display-player"></span> | 
+            Pálya: <span class="display-level"></span> | 
+            Idő: <span class="display-time">00:00</span>
+        </div>
+        <div class="board-container"></div>
+        <div class="controls">
+            <button data-action="saveGame">Játékállás mentése</button>
+            <button class="backToMain">Vissza a főmenübe</button>
+        </div>
+        <div class="custom-modal hidden"></div>
+    </div>
+
+    <div class="menu hidden" data-screen="victoryScreen">
+        <h2>Győzelem!</h2>
+        <p>Gratulálok, <strong class="victory-player-name"></strong>!</p>
+        <p>Sikeresen megoldottad a(z) <strong class="victory-level-name"></strong> pályát!</p>
+        <p>Ideje: <strong class="victory-time"></strong></p>
+        <button class="backToMain">Vissza a főmenübe</button>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

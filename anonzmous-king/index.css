@@ -1,0 +1,172 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #eef2f3;
+    margin: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.menu {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.input-group { margin-bottom: 15px; text-align: left; }
+.input-group input { width: 90%; padding: 8px; margin-top: 5px; }
+
+fieldset {
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+}
+
+button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover { background-color: #45a049; }
+
+
+.input-error {
+    border: 2px solid #ff4d4d !important; 
+    background-color: #ffe6e6;
+}
+
+.input-error:focus {
+    outline: none;
+    box-shadow: 0 0 5px #ff4d4d;
+}
+
+.header { font-size: 18px; margin-bottom: 20px; font-weight: bold; }
+
+.board-container {
+    display: grid;
+    gap: 2px;
+    background-color: #222;
+    padding: 4px;
+    margin: 0 auto 20px auto;
+    border-radius: 4px;
+    width: max-content;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    background-image: url('vilagos_fu.png');
+    background-color: #a4d373;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cell.house {
+    background-image: url('haz.png'); 
+    background-size: 90%; 
+    background-position: center;
+    cursor: not-allowed;
+}
+
+.cell.house span {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1.5px solid #2b1a0a;
+    border-radius: 50%;
+    min-width: 24px; 
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #2b1a0a;
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.board-container .cell.wall { 
+    background-image: url('fal.png') !important;
+    background-color: transparent !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    border: none !important;
+}
+
+.board-container .cell.estate { 
+    background-image: url('sotet_fu.png') !important;
+    background-color: #5b8c2a !important;
+    background-size: cover !important;
+    border: 2px solid #a3ff47;
+}
+
+.board-container .cell.error-wall {
+    border: 3px solid #ff1a1a !important; 
+    filter: sepia(1) hue-rotate(-50deg) saturate(3) !important; 
+    box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.7);
+}
+
+.board-container .cell.error-small {
+    background-color: rgba(255, 0, 0, 0.4) !important;
+    background-blend-mode: multiply; 
+    border: 2px solid #ff0000 !important;
+}
+
+.board-container .cell.error-large {
+    background-color: rgba(255, 0, 0, 0.4) !important;
+    background-blend-mode: multiply; 
+    border: 2px solid #ff0000 !important;
+}
+
+.custom-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    z-index: 100;
+    text-align: center;
+    font-weight: bold;
+}
+
+.saved-games-dropdown {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
